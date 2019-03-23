@@ -8,41 +8,41 @@ module.exports = class extends Language {
 
 		this.language = {
 			WARNINGS: 'Warnings',
-			AFK_HELP_DESCRIPTION: 'Enable/Disable or set a AFK message for yourself.',
+			AFK_HELP_DESCRIPTION: 'Aktiviere/Deaktiviere deine AFK-Nachricht oder lege eine neue fest.',
 			AFK_HELP_EXTENDED: prefix =>
 				[
-					`**${prefix}afk** will enable or disable your AFK message`,
-					`**${prefix}afk your afk message here** will set your new AFK message to be sent.`,
+					`**${prefix}afk** aktiviert bzw. deaktiviert deine AFK-Nachricht.`,
+					`**${prefix}afk deine AFK-Nachricht** legt eine neue AFK-Nachricht fest.`,
 					'',
-					'Advanced: You can also set your afk message with a custom made embed!'
+					'Tipp: Du kannst auch ein Discord-Embed als AFK-Nachricht festlegen.'
 				].join('\n'),
-			AFK_MESSAGE_UPDATED: 'You have successfully updated your AFK message.',
-			AFK_STATUS_TOGGLED: status => `You have successfully **${status ? 'ENABLED' : 'DISABLED'}** your AFK message.`,
-			ANNOUNCE_HELP_DESCRIPTION: 'Send an announcement to roles without having to make them mentionable to everyone on your server.',
-			ANNOUNCE_CONTENT_REQUEST: 'Please type the message you would like to send. **Hint**: You can also send an embeded message, through an embed code.',
-			ANNOUNCE_RESPONSE_AUTHOR_TEXT: memberName => `Announcement By: ${memberName}`,
-			ANNOUNCE_RESPONSE_FAILED: 'I was unable to send a message to the channel you provided. Please check the permissions to make sure I have all the necessary permissions.',
-			ANNOUNCE_RESPONSE_SUCCESS: 'The announcement was successfully sent.',
+			AFK_MESSAGE_UPDATED: 'Deine AFK-Nachricht wurde erfolreich aktualisiert.',
+			AFK_STATUS_TOGGLED: status => `Deine AFK-Nachricht wurde erfolreich **${status ? 'AKTIVIERT' : 'DEAKTIVIERT'}**.`,
+			ANNOUNCE_HELP_DESCRIPTION: 'Sende eine Ankündigung an eine Rolle ohne sie für jeden auf dem Server erwähnbar zu machen.',
+			ANNOUNCE_CONTENT_REQUEST: 'Bitte sende deine Nachricht. **Tipp:**: Du kannst auch ein Discord-Embed als Nachricht benutzen.',
+			ANNOUNCE_RESPONSE_AUTHOR_TEXT: memberName => `Ankündigung von: ${memberName}`,
+			ANNOUNCE_RESPONSE_FAILED: 'Senden an diesen Kanal fehlgeschlagen. Bitte überprüfe, ob ich alle benötigten Berechtigungen habe.',
+			ANNOUNCE_RESPONSE_SUCCESS: 'Die Ankündigung wurde erfolgreich gesendet.',
 			COMMANDS_SERVER: {
-				title: guildName => `Server Stats For « ${guildName} »`,
-				statsName: 'Server Specific',
+				title: guildName => `Server Statistiken für « ${guildName} »`,
+				statsName: 'Server-spezifisch',
 				statsValue: (createdAt, owner, channels, roles, members, bots) =>
-					[`Created [**${createdAt}**]`, `👑 [**${owner}**]`, `Channels [**${channels}**]`, `Roles [**${roles}**]`, `👥 [**${members}**]`, `🤖 [**${bots}**]`].join('\n'),
-				settingsName: 'G4M3R Specific Settings',
+					[`Erstellt [**${createdAt}**]`, `👑 [**${owner}**]`, `Kanäle [**${channels}**]`, `Rollen [**${roles}**]`, `👥 [**${members}**]`, `🤖 [**${bots}**]`].join('\n'),
+				settingsName: 'G4M3R-spezifische Einstellungen',
 				settingsValue: settings =>
 					[
-						`Language: ${settings.language}`,
-						`Moderator Roles: ${settings.settings.moderation.modRoles.map(roleID => `<@&${roleID}>`).join(' ')}`,
-						`Admin Users: ${settings.settings.admins.map(userID => `<@${userID}>`).join(' ')}`,
-						`AutoAssignRole: ${settings.settings.autoAssignRoles.mainRole ? `<@&${settings.settings.autoAssignRoles.mainRole}>` : ''}`,
-						`Self Assignable Roles: ${settings.saRoles.length ? settings.saRoles.map(roleID => `<@&${roleID}>`).join(' ') : 'None'}`,
-						`Mod. Assignable Roles: ${settings.assignRoles.length ? settings.assignRoles.map(roleID => `<@&${roleID}>`).join(' ') : 'None'}`,
-						`Verify Role: ${settings.settings.verify.role ? `<@&${settings.settings.verify.role}>` : 'None'}`,
-						`Mail Category: ${settings.settings.mail.mailCategory ? settings.settings.mail.mailCategory : 'None'}`,
-						`Verify Category: ${settings.settings.verify.category}`,
-						`Open Verification Channels: ${settings.welcomeChannels.length}`,
+						`Sprache: ${settings.language}`,
+						`Moderator-Rollen: ${settings.settings.moderation.modRoles.map(roleID => `<@&${roleID}>`).join(' ')}`,
+						`Admins: ${settings.settings.admins.map(userID => `<@${userID}>`).join(' ')}`,
+						`Automatisch zugewiesene Rolle: ${settings.settings.autoAssignRoles.mainRole ? `<@&${settings.settings.autoAssignRoles.mainRole}>` : ''}`,
+						`Selbstzuweisbare Rollen: ${settings.saRoles.length ? settings.saRoles.map(roleID => `<@&${roleID}>`).join(' ') : 'None'}`,
+						`Von Mods zuweisbare Rollen: ${settings.assignRoles.length ? settings.assignRoles.map(roleID => `<@&${roleID}>`).join(' ') : 'None'}`,
+						`Verifzierungs-Rolle: ${settings.settings.verify.role ? `<@&${settings.settings.verify.role}>` : 'None'}`,
+						`Mail Kategorie: ${settings.settings.mail.mailCategory ? settings.settings.mail.mailCategory : 'None'}`,
+						`Verifizierungs-Kategorie: ${settings.settings.verify.category}`,
+						`Aktuell aktive Verifizierungs-Kanäle: ${settings.welcomeChannels.length}`,
 						// `Verification Main Channel: ${settings.channels.verifyMainChannelID}`,
-						`Send AFK Responses: ${settings.settings.allowAfkResponses}`,
+						`Send AFK-Nachrichten: ${settings.settings.allowAfkResponses}`,
 						`Feedback Feature: **Idea:** ${settings.settings.feedback.idea.status} | **Issues**: ${settings.settings.feedback.bug.status}`
 					].join('\n')
 			},
